@@ -13,6 +13,12 @@
   --card:     #FFFFFF;
 }
 
+[data-theme="dark"] {
+  --bg: #121212; --bg-warm: #1E1E1E; --ink: #F7F5F0; --ink2: #E0E0E0;
+  --muted: #A0A0A0; --border: #333333; --white: #1E1E1E; --card: #1E1E1E;
+}
+.theme-toggle { background: none; border: none; font-size: 1.2rem; cursor: pointer; margin-left: 1rem; }
+
 html { scroll-behavior: smooth; }
 
 body {
