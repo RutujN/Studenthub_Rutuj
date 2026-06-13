@@ -593,3 +593,30 @@ footer small { font-size: 0.8rem; color: var(--muted); }
 /* ── DARK NAV BACKGROUND ── */
 [data-theme="dark"] nav { background: rgba(18,18,18,0.95); }
 [data-theme="dark"] .nav-links { background: rgba(18,18,18,0.98); }
+
+/* ── CTA FORM STYLES ── */
+.cta-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.cta-form input[type="email"] {
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  min-width: 240px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  outline: none;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.cta-form input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+.cta-form input[type="email"]:focus { border-color: var(--amber); }
+
+@media (max-width: 600px) {
+  .cta-form { flex-direction: column; width: 100%; }
+  .cta-form input[type="email"] { min-width: 100%; }
+}
