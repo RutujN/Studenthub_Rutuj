@@ -19,6 +19,22 @@
 }
 .theme-toggle { background: none; border: none; font-size: 1.2rem; cursor: pointer; margin-left: 1rem; }
 
+/* Accessibility: skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--amber);
+  color: var(--ink);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  z-index: 999;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
 html { scroll-behavior: smooth; }
 
 body {
