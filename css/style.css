@@ -644,33 +644,114 @@ footer small { font-size: 0.8rem; color: var(--muted); }
   .cta-form input[type="email"] { min-width: 100%; }
 }
 
+/* ── SHARED SECTION HEADER ── */
+.section-header {
+  text-align: center;
+  margin-bottom: 2.8rem;
+}
+.section-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.section-header p { color: var(--muted); font-size: 0.95rem; }
+
 /* ── WIDGETS ── */
+#widgets {
+  padding: 5rem 6%;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
 .widgets-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  max-width: 860px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.4rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 .widget-card {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
-.widget-title { font-weight: 600; font-size: 0.9rem; color: var(--ink); margin-bottom: 1rem; }
-.widget-body  { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.widget-title { font-weight: 600; font-size: 0.88rem; color: var(--ink); margin-bottom: 0.4rem; }
+.widget-body  { font-size: 0.85rem; color: var(--muted); line-height: 1.6; flex: 1; }
+.widget-loading { color: var(--muted); font-size: 0.82rem; font-style: italic; }
+
+/* Weather display */
+.weather-display { text-align: center; padding: 0.5rem 0; }
+.weather-icon    { font-size: 2.4rem; line-height: 1; margin-bottom: 0.3rem; }
+.weather-temp    { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--ink); line-height: 1; }
+.weather-cond    { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+.weather-wind    { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+
+/* GitHub search row */
+.github-search { display: flex; gap: 0.5rem; margin-bottom: 0.8rem; }
+.github-search input {
+  flex: 1; padding: 0.5rem 0.8rem;
+  border: 1px solid var(--border); border-radius: 6px;
+  background: var(--white); color: var(--ink);
+  font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+  transition: border-color var(--transition);
+}
+.github-search input:focus { outline: none; border-color: var(--amber); }
 .btn-widget {
   background: var(--amber); color: var(--ink);
   border: none; border-radius: 6px;
-  padding: 0.45rem 1rem; font-size: 0.82rem; font-weight: 600;
-  cursor: pointer; margin-top: 0.8rem;
+  padding: 0.48rem 1rem; font-size: 0.82rem; font-weight: 600;
+  cursor: pointer;
   font-family: 'DM Sans', sans-serif;
-  transition: background 0.2s;
+  transition: background var(--transition);
+  white-space: nowrap; align-self: flex-start;
 }
 .btn-widget:hover { background: var(--amber-lt); }
-.github-profile { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
-.github-profile img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); }
-.github-profile .gh-name { font-weight: 600; font-size: 0.85rem; color: var(--ink); }
-.github-profile .gh-bio  { font-size: 0.75rem; color: var(--muted); }
-@media (max-width: 600px) { .widgets-grid { grid-template-columns: 1fr; } }
+
+/* GitHub profile result */
+.github-profile { display: flex; align-items: center; gap: 0.9rem; margin-top: 0.4rem; }
+.github-profile img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; }
+.gh-name { font-weight: 600; font-size: 0.88rem; color: var(--ink); }
+.gh-name a { color: var(--ink); text-decoration: none; }
+.gh-name a:hover { color: var(--amber); }
+.gh-bio   { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+.gh-stats { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+
+/* ── FEEDBACK ── */
+#feedback { padding: 5rem 6%; background: var(--bg); border-top: 1px solid var(--border); }
+.feedback-card {
+  max-width: 580px; margin: 0 auto;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 2.4rem;
+  box-shadow: 0 4px 24px rgba(18,16,14,0.05);
+}
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+.form-group input,
+.form-group textarea {
+  width: 100%; padding: 0.72rem 1rem;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  background: var(--bg); color: var(--ink);
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  transition: border-color var(--transition); resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus { outline: none; border-color: var(--amber); }
+.field-error { display: block; font-size: 0.75rem; color: #D94040; margin-top: 0.3rem; min-height: 1rem; }
+.form-success { margin-top: 1rem; font-size: 0.9rem; color: #2E7D32; font-weight: 500; }
+
+@media (max-width: 1024px) {
+  .widgets-grid { grid-template-columns: 1fr 1fr; }
+  .widget-card--wide { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  .widgets-grid { grid-template-columns: 1fr; }
+  .widget-card--wide { grid-column: span 1; }
+  .feedback-card { padding: 1.6rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
