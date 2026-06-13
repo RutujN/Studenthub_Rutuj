@@ -16,3 +16,21 @@ themeToggle.addEventListener('click', () => {
     themeToggle.textContent = '☀️';
   }
 });
+
+// Dynamic greeting and date in hero card
+function setGreeting() {
+  const hour = new Date().getHours();
+  let greeting = 'Good morning';
+  if (hour >= 12 && hour < 17) greeting = 'Good afternoon';
+  else if (hour >= 17) greeting = 'Good evening';
+
+  const greetEl = document.getElementById('greetingTitle');
+  if (greetEl) greetEl.textContent = `${greeting}, Rohan`;
+
+  const dateEl = document.getElementById('currentDate');
+  if (dateEl) {
+    const now = new Date();
+    dateEl.textContent = now.toLocaleDateString('en-IN', { weekday: 'short', month: 'short', day: 'numeric' });
+  }
+}
+setGreeting();
