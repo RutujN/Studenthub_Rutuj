@@ -583,3 +583,13 @@ footer small { font-size: 0.8rem; color: var(--muted); }
   .cta-banner { text-align: center; justify-content: center; }
   footer { flex-direction: column; text-align: center; }
 }
+
+/* ── HAMBURGER ANIMATION ── */
+.hamburger span { transition: transform 0.2s ease, opacity 0.2s ease; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ── DARK NAV BACKGROUND ── */
+[data-theme="dark"] nav { background: rgba(18,18,18,0.95); }
+[data-theme="dark"] .nav-links { background: rgba(18,18,18,0.98); }
