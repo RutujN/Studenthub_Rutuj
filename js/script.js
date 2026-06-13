@@ -101,3 +101,60 @@ waitlistForm?.addEventListener('submit', (e) => {
 emailInput?.addEventListener('input', () => {
   emailError.textContent = '';
 });
+
+// ── QUOTE GENERATOR (Fetch API + Async/Await) ──
+async function fetchQuote() {
+  const quoteBody = document.getElementById('quoteBody');
+  if (!quoteBody) return;
+  quoteBody.textContent = 'Loading…';
+  try {
+    const res  = await fetch('https://quotesapi.prayushadhikari.com.np/api/quotes?order=random&limit=1');
+    const data = await res.json();
+    const q    = data.data[0];
+    quoteBody.innerHTML = `
+      <blockquote style="font-style:italic; color:var(--ink); margin-bottom:0.5rem;">"${q.quote}"</blockquote>
+      <cite style="font-size:0.75rem; color:var(--muted);">— ${q.author}</cite>
+    `;
+  } catch {
+    quoteBody.innerHTML = '<em>"The secret of getting ahead is getting started."</em><br><cite style="font-size:0.75rem;color:var(--muted);">— Mark Twain</cite>';
+  }
+}
+document.getElementById('newQuoteBtn')?.addEventListener('click', fetchQuote);
+fetchQuote();
+
+// ── GITHUB PROFILE FETCHER (Fetch API + Async/Await) ──
+async function fetchGitHub(username) {
+  const result = document.getElementById('githubResult');
+  if (!result) return;
+  result.innerHTML = '<span style="color:var(--muted);font-size:0.8rem;">Loading…</span>';
+  try {
+    const res  = await fetch(`https://api.github.com/users/${username}`);
+    if (!res.ok) throw new Error('Not found');
+    const data = await res.json();
+    result.innerHTML = `
+      <div class="github-profile">
+        <img src="${data.avatar_url}" alt="${data.login} avatar" />
+        <div>
+          <div class="gh-name"><a href="${data.html_url}" target="_blank" rel="noopener">${data.name ?? data.login}</a></div>
+          <div class="gh-bio">${data.bio ?? 'No bio provided'}</div>
+          <div style="font-size:0.72rem;color:var(--muted);margin-top:0.2rem;">📦 ${data.public_repos} repos · 👥 ${data.followers} followers</div>
+        </div>
+      </div>
+    `;
+  } catch {
+    result.innerHTML = '<span style="color:#D94040;font-size:0.8rem;">User not found. Check the username.</span>';
+  }
+}
+document.getElementById('githubFetchBtn')?.addEventListener('click', () => {
+  const val = document.getElementById('githubInput')?.value.trim();
+  if (val) fetchGitHub(val);
+});
+document.getElementById('githubInput')?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const val = e.target.value.trim();
+    if (val) fetchGitHub(val);
+  }
+});
+// Pre-fill your own username
+const ghInput = document.getElementById('githubInput');
+if (ghInput) ghInput.value = 'RutujN';

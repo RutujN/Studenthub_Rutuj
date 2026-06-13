@@ -104,7 +104,28 @@
     </div>
   </div>
 </section>
-
+<!-- WIDGETS SECTION -->
+<section id="widgets" style="padding: 5rem 6%; background: var(--white); border-top: 1px solid var(--border);">
+  <div style="text-align:center; margin-bottom:2.5rem;">
+    <h2 style="font-family:'DM Serif Display',serif; font-size:clamp(1.6rem,3vw,2.4rem); margin-bottom:0.5rem;">Live Tools</h2>
+    <p style="color:var(--muted); font-size:0.95rem;">Useful widgets powered by real data.</p>
+  </div>
+  <div class="widgets-grid">
+    <div class="widget-card">
+      <div class="widget-title">💬 Daily Quote</div>
+      <div id="quoteBody" class="widget-body">Loading quote…</div>
+      <button class="btn-widget" id="newQuoteBtn">New quote</button>
+    </div>
+    <div class="widget-card">
+      <div class="widget-title">🐙 GitHub Profile</div>
+      <div class="widget-body">
+        <input type="text" id="githubInput" placeholder="Enter GitHub username" style="width:100%; padding:0.5rem 0.8rem; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--ink); font-family:'DM Sans',sans-serif; font-size:0.85rem; margin-bottom:0.6rem;" />
+        <button class="btn-widget" id="githubFetchBtn">Fetch Profile</button>
+        <div id="githubResult" style="margin-top:0.8rem;"></div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="cta-banner">
   <div class="cta-text">
     <h2>Your semester, finally <em>under control.</em></h2>
