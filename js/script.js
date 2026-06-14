@@ -189,24 +189,49 @@ function initWeather() {
 initWeather();
 
 /* ── QUOTE WIDGET ── */
-async function fetchQuote() {
-  if (!quoteBody) return;
-  quoteBody.textContent = 'Loading quote...';
+// 20-quote pool — shuffled each page load, cycles through on button click
+const QUOTES = [
+  { q: 'The secret of getting ahead is getting started.', a: 'Mark Twain' },
+  { q: 'It always seems impossible until it is done.', a: 'Nelson Mandela' },
+  { q: "Don't watch the clock; do what it does. Keep going.", a: 'Sam Levenson' },
+  { q: 'The expert in anything was once a beginner.', a: 'Helen Hayes' },
+  { q: 'Success is the sum of small efforts repeated day in and day out.', a: 'Robert Collier' },
+  { q: 'Education is the most powerful weapon you can use to change the world.', a: 'Nelson Mandela' },
+  { q: 'The beautiful thing about learning is that no one can take it away from you.', a: 'B.B. King' },
+  { q: 'An investment in knowledge pays the best interest.', a: 'Benjamin Franklin' },
+  { q: 'Study hard, for the well is deep and our brains are shallow.', a: 'Richard Baxter' },
+  { q: 'The more that you read, the more things you will know.', a: 'Dr. Seuss' },
+  { q: 'Live as if you were to die tomorrow. Learn as if you were to live forever.', a: 'Mahatma Gandhi' },
+  { q: 'The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice.', a: 'Brian Herbert' },
+  { q: "You don't have to be great to start, but you have to start to be great.", a: 'Zig Ziglar' },
+  { q: 'Believe you can and you are halfway there.', a: 'Theodore Roosevelt' },
+  { q: 'It does not matter how slowly you go as long as you do not stop.', a: 'Confucius' },
+  { q: 'Success is not final, failure is not fatal: it is the courage to continue that counts.', a: 'Winston Churchill' },
+  { q: 'The harder I work, the luckier I get.', a: 'Samuel Goldwyn' },
+  { q: 'Motivation is what gets you started. Habit is what keeps you going.', a: 'Jim Ryun' },
+  { q: 'Push yourself, because no one else is going to do it for you.', a: 'Unknown' },
+  { q: 'Great things never come from comfort zones.', a: 'Unknown' },
+];
 
-  try {
-    const response = await fetch('https://api.quotable.io/random?tags=education|inspirational');
-    if (!response.ok) throw new Error('Quote request failed');
-    const quote = await response.json();
-    quoteBody.innerHTML = `
-      <blockquote style="font-style:italic;color:var(--ink);margin-bottom:0.5rem;">"${escapeHTML(quote.content)}"</blockquote>
-      <cite style="font-size:0.75rem;color:var(--muted);">— ${escapeHTML(quote.author)}</cite>
-    `;
-  } catch {
-    quoteBody.innerHTML = `
-      <blockquote style="font-style:italic;color:var(--ink);margin-bottom:0.5rem;">"The secret of getting ahead is getting started."</blockquote>
-      <cite style="font-size:0.75rem;color:var(--muted);">— Mark Twain</cite>
-    `;
+// Shuffle once on load
+let quotePool = [...QUOTES].sort(() => Math.random() - 0.5);
+let quoteIndex = 0;
+
+function fetchQuote() {
+  const quoteBody = document.getElementById('quoteBody');
+  if (!quoteBody) return;
+
+  // Reshuffle when we've cycled through all quotes
+  if (quoteIndex >= quotePool.length) {
+    quotePool = [...QUOTES].sort(() => Math.random() - 0.5);
+    quoteIndex = 0;
   }
+
+  const pick = quotePool[quoteIndex++];
+  quoteBody.innerHTML = `
+    <blockquote style="font-style:italic;color:var(--ink);line-height:1.6;margin-bottom:0.6rem;">"${pick.q}"</blockquote>
+    <cite style="font-size:0.75rem;color:var(--muted);font-style:normal;">— ${pick.a}</cite>
+  `;
 }
 
 newQuoteBtn?.addEventListener('click', fetchQuote);
