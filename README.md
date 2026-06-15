@@ -8,6 +8,10 @@ The application is being developed incrementally, with each week introducing new
 
 ---
 
+## Live Demo
+
+🔗 https://rutujn.github.io/Studenthub_Rutuj/
+
 ## Project Goal
 
 To create a centralized platform that helps students manage academic activities, productivity, and essential campus-related resources in one place.
@@ -31,27 +35,44 @@ This project will be developed incrementally over a 6-week bootcamp, with each s
 
 # Week 1 Overview
 
-Week 1 focused on establishing the foundation of StudentHub through the development of a responsive landing page and project repository setup.
+Week 1 focused on building the foundation of StudentHub through a responsive, accessible, and interactive landing page while establishing the project's repository structure and deployment workflow.
 
-### Tasks
+### Tasks Completed
 
-* Project repository creation and configuration
-* README documentation setup
-* Responsive landing page development
-* Navigation bar implementation
-* Hero section with call-to-action
-* Additional content section(s)
-* Mobile and desktop responsiveness
-* GitHub Pages deployment
-* Version control using Git and GitHub
+* Created and configured the GitHub repository
+* Built a responsive landing page with:
+  * Navigation bar
+  * Hero section
+  * Features section
+  * Student waitlist form
+* Implemented Semantic HTML and accessibility best practices
+* Designed responsive layouts using Flexbox, Grid, and Media Queries
+* Added JavaScript interactivity including:
+  * Dark mode toggle
+  * Sidebar navigation toggle
+  * DOM manipulation and event handling
+* Integrated live API-powered tools:
+  * Weather Widget
+  * Daily Quote Generator
+  * GitHub Profile Finder
+* Deployed the project using GitHub Pages
 
 ### Current Tech Stack
 
 * HTML5
 * CSS3
-* JavaScript
+* JavaScript (ES6)
+* Fetch API & Async/Await
 * Git & GitHub
 * GitHub Pages
+
+### Live Features
+
+* Real-time weather information using external APIs
+* Random motivational quote generator
+* GitHub profile search and user information retrieval
+* Dark mode support
+* Responsive mobile navigation
 
 ## Future Enhancements
 
